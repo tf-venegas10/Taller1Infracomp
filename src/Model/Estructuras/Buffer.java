@@ -60,6 +60,7 @@ public class Buffer {
 		}
 		while(agregados==0){
 			synchronized (esperaProductores) {
+				//hay que darle relase al lock del objeto buffer antes de esto.
 				esperaProductores.wait();
 			}
 		}
