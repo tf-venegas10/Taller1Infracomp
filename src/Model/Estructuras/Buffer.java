@@ -19,17 +19,10 @@ public class Buffer {
 	 */
 	private Mensaje[] buffer;
 	
-	/**
-	 * Objeto que sirve como cola de espera para los consumidores.
-	 */
-	private Object esperaConsumidores;
-	/**
-	 * Objeto que sirve como cola de espera para los productores.
-	 */
-	private Object esperaProductores;
-	
+
 	
 	public Buffer(int tamano) {
+		
 		agregados=0;
 		index=0;
 		size=tamano;
@@ -38,14 +31,12 @@ public class Buffer {
 	
 	public synchronized void escribir(Mensaje m) throws InterruptedException{
 		if (agregados==0){
-			synchronized (esperaProductores) {
-			esperaProductores.notifyAll();	
-			}
+			
+			notifyAll();	
+			
 		}
 		while(agregados==size){
-			synchronized (esperaConsumidores) {
-				esperaConsumidores.wait();
-			}
+			wait();
 		}
 		buffer[index]=m;
 		index=(index+1)%size;
@@ -54,15 +45,10 @@ public class Buffer {
 	
 	public synchronized Mensaje leer() throws InterruptedException{
 		if (agregados==size){
-			synchronized (esperaConsumidores) {
-				esperaConsumidores.notifyAll();
-			}
+			notifyAll();
 		}
 		while(agregados==0){
-			synchronized (esperaProductores) {
-				//hay que darle relase al lock del objeto buffer antes de esto.
-				esperaProductores.wait();
-			}
+			wait();
 		}
 		int i = index;
 		index= (index+1) % size;
