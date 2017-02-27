@@ -2,27 +2,17 @@ package Model.Estructuras;
 
 
 public class Buffer {
-	/**
-	 * Tamaño del buffer
-	 */
+	// Tamaï¿½o del buffer
 	private  int size; 
-	/**
-	 * Entero con la información del index actual en el que se puede almacenar info.
-	 */
+	// Entero con la informaciï¿½n del index actual en el que se puede almacenar info.
 	private int index;
-	/**
-	 * entero que dice cuantos elementos tiene el buffer realmente. 
-	 */
+	 // entero que dice cuantos elementos tiene el buffer realmente.
 	private int agregados;
-	/**
-	 * Arreglo dónde se guarda los mensajes en formato String.
-	 */
+	 //Arreglo dï¿½nde se guarda los mensajes en formato String.
 	private Mensaje[] buffer;
 	
-
 	
 	public Buffer(int tamano) {
-		
 		agregados=0;
 		index=0;
 		size=tamano;
@@ -31,9 +21,7 @@ public class Buffer {
 	
 	public synchronized void escribir(Mensaje m) throws InterruptedException{
 		if (agregados==0){
-			
 			notifyAll();	
-			
 		}
 		while(agregados==size){
 			wait();
