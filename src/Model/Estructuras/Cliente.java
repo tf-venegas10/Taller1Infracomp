@@ -6,7 +6,7 @@ public class Cliente extends Thread {
 	
 	private Buffer buffer;
 	
-	private static String[] messages={"A","B","C"};
+	public final static String[] messages={"A","B","C"};
 	
 	public Cliente(Buffer buff) {
 		buffer=buff;
@@ -19,6 +19,7 @@ public class Cliente extends Thread {
 		Mensaje mensaje= new Mensaje(m,buffer);
 		try {
 			String resp= mensaje.hacerPedido();
+			
 			System.out.println("Recibi respuesta a mi mensaje!");
 			System.out.println("Mi pregunta: "+m);
 			System.out.println("Mi respuesta: "+ resp);
