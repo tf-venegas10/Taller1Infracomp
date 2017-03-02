@@ -7,7 +7,7 @@ public class Servidor extends Thread {
 
 	private Buffer buffer;
 	
-	private static String[] respuestas= {"1","2","3"};
+	public static final String[] respuestas= {"1","2","3"};
 	
 	public Servidor(Buffer buff) {
 		buffer= buff;
@@ -16,12 +16,11 @@ public class Servidor extends Thread {
 	@Override
 	public void run() {
 		Mensaje m;
-		Random r= new Random();
 		String respuesta ;
 		while(true){
 			try {
 				m= buffer.leer();
-				respuesta = respuestas[r.nextInt(respuestas.length)];
+				respuesta = respuestas[m.leerPedido().compareTo("A")];
 				m.responderPedido(respuesta);
 				Servidor.yield();
 			} catch (InterruptedException e) {
