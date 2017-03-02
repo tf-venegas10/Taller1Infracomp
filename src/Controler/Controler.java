@@ -15,7 +15,7 @@ public class Controler {
 			s.start();
 		}
 		for (int i = 0; i < 100; i++) {
-			c= new Cliente(buff);
+			c= new Cliente(buff,i);
 			c.start();
 		}
 	}

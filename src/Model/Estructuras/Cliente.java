@@ -6,10 +6,13 @@ public class Cliente extends Thread {
 	
 	private Buffer buffer;
 	
+	private int id;
+	
 	public final static String[] messages={"A","B","C"};
 	
-	public Cliente(Buffer buff) {
+	public Cliente(Buffer buff, int id) {
 		buffer=buff;
+		this.id = id;
 	}
 	
 	@Override
@@ -19,10 +22,11 @@ public class Cliente extends Thread {
 		Mensaje mensaje= new Mensaje(m,buffer);
 		try {
 			String resp= mensaje.hacerPedido();
-			
-			System.out.println("Recibi respuesta a mi mensaje!");
+			synchronized(System.class){
+			System.out.println("Soy el cliente: "+id+"\nRecibi respuesta a mi mensaje!");
 			System.out.println("Mi pregunta: "+m);
 			System.out.println("Mi respuesta: "+ resp);
+			}
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

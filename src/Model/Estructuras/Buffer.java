@@ -11,16 +11,19 @@ public class Buffer {
 	//Arreglo d�nde se guarda los mensajes en formato String.
 	private Mensaje[] buffer;
 
-	private Cola<Integer> cola;
+	private Cola<Integer> indexIn;
+	
+	private Cola<Integer> indexOut;
 
 	public Buffer(int tamano) {
 		agregados=0;
 		index=0;
 		size=tamano;
 		buffer= new Mensaje[size];
-		cola = new Cola<Integer>();
+		indexOut = new Cola<Integer>();
+		indexIn = new Cola<Integer>();
 		for (int i = 0; i < size; i++) {
-			cola.enqueue(i);
+			indexIn.enqueue(i);
 		}
 	}
 
@@ -31,8 +34,9 @@ public class Buffer {
 		while(agregados==size){
 			wait();
 		}
+		index = indexIn.dequeue();
 		buffer[index]=m;
-		index=(index+1)%size;
+		indexOut.enqueue(index);
 		agregados++;
 	}
 
@@ -43,9 +47,9 @@ public class Buffer {
 		while(agregados==0){
 			wait();
 		}
-		int i = index;
-		index= (index+1) % size;
+		index = indexOut.dequeue();
+		indexIn.enqueue(index);
 		agregados--;
-		return buffer[i];
+		return buffer[index];
 	}
 }
