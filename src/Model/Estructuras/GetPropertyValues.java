@@ -33,6 +33,7 @@ public class GetPropertyValues {
 			String numClient = prop.getProperty("numClient");
 			String numServ = prop.getProperty("numServ");
                         
+                        //pone en resp los properties leidos
                         resp [0] = Integer.parseInt(tamanoBuffer);
                         resp [1] = Integer.parseInt(numClient);
                         resp [2] = Integer.parseInt(numServ);
