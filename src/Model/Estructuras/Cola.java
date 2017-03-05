@@ -8,17 +8,17 @@ public class Cola<T extends Integer>{
 	private Nodo<T> primero;
 	
 	/**
-	 * Último nodo de la cola
+	 * Ultimo nodo de la cola
 	 */
 	private Nodo<T> ultimo;
 	
 	/**
-	 * Tamaño de la cola
+	 * Tamano de la cola
 	 */
 	private int size;
 	
 	/**
-	 * Método que retorna el tamaño de la cola
+	 * Metodo que retorna el tamano de la cola
 	 * @return Size de la cola
 	 */
 	public int size(){
@@ -26,16 +26,16 @@ public class Cola<T extends Integer>{
 	}
 	
 	/**
-	 * Método que retorna el estado de la cola
-	 * @return True si está vacia, false en caso contrario
+	 * Metodo que retorna el estado de la cola
+	 * @return True si esta vacia, false en caso contrario
 	 */
 	public boolean isEmpty(){
 		return size==0;
 	}
 	
 	/**
-	 * Método que agrega un elemento al final de la cola
-	 * @param item Elemento que será contenido al final de la cola
+	 * Metodo que agrega un elemento al final de la cola
+	 * @param item Elemento que sera contenido al final de la cola
 	 */
 	public void enqueue(T item){
 		Nodo<T> nuevo = new Nodo<T>(item);
@@ -47,7 +47,7 @@ public class Cola<T extends Integer>{
 	}
 	
 	/**
-	 * Método que saca el elemento de la cabeza de la cola
+	 * Metodo que saca el elemento de la cabeza de la cola
 	 * @return Elemento de la cabeza de la cola
 	 */
 	public T dequeue(){

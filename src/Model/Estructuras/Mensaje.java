@@ -1,22 +1,15 @@
 package Model.Estructuras;
 
 public class Mensaje  {
-	
-	/**
-	 * String que modela la solicitud del usuario
-	 */
+         //String que modela la solicitud del usuario
 
 	private String request;
-	
-	/**
-	 * String que modela la respuesta del serivdor
-	 */
-	
+	//String que modela la respuesta del serivdor
+
 	private String response;
-	/**
-	 * Atributo que apunta al buffer dónde se quiere almancenar el mensaje.
-	 */
-	
+
+	 //Atributo que apunta al buffer donde se quiere almancenar el mensaje.
+
 	private Buffer buffer;
 	
 	public Mensaje(String pedido, Buffer buff) {
