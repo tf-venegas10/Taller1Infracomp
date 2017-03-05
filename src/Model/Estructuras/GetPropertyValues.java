@@ -6,6 +6,7 @@
 package Model.Estructuras;
 
 import java.io.*;
+import java.time.Clock;
 import java.util.*;
 
 /**
@@ -14,7 +15,7 @@ import java.util.*;
  */
 public class GetPropertyValues {
 	InputStream inputStream;
-        int [] resp= new int[2];
+        int [] resp= new int[3];
 	public int [] getPropValues() throws IOException {
  
 		try {
@@ -26,6 +27,8 @@ public class GetPropertyValues {
 			if (inputStream != null) {
 				prop.load(inputStream);
 			} else {
+                            System.out.println(
+                                System.getProperty("java.class.path"));
 				throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
 			}
  
@@ -40,9 +43,9 @@ public class GetPropertyValues {
                         
 		} catch (Exception e) {
 			System.out.println("Exception: " + e);
-		} finally {
-			inputStream.close();
-		}
+		} //finally {
+			//inputStream.close();
+		//}
 		return resp;
 	}
 }

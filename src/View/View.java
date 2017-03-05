@@ -7,8 +7,7 @@ public class View {
 	public static void main(String[] args) throws IOException{
             GetPropertyValues properties = new GetPropertyValues();
             
-		int params [] = new int[2];
-                params=properties.getPropValues();
+		int params [] =properties.getPropValues();
 		Controler.playGround(params);
 	}
 
