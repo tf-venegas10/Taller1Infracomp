@@ -1,7 +1,5 @@
 package Model.Estructuras;
 
-import java.util.Random;
-
 public class Servidor extends Thread {
 	
 
@@ -22,7 +20,7 @@ public class Servidor extends Thread {
 				m= buffer.leer();
 				respuesta = respuestas[m.leerPedido().compareTo("A")];
 				m.responderPedido(respuesta);
-				Servidor.yield();
+				Thread.yield();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
