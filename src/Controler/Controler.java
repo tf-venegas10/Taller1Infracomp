@@ -11,6 +11,7 @@ public class Controler {
                 int tamBuff = params[0];
                 int numServ = params[2];
                 int numClien= params[1];
+                int numMens = params[3];
                 
 		Buffer buff= new Buffer(tamBuff);
 		Servidor s;
@@ -20,7 +21,7 @@ public class Controler {
 			s.start();
 		}
 		for (int i = 0; i < numClien; i++) {
-			c= new Cliente(buff,i);
+			c= new Cliente(buff,i, numMens);
 			c.start();
 		}
 	}

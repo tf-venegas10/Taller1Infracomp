@@ -15,7 +15,7 @@ import java.util.*;
  */
 public class GetPropertyValues {
 	InputStream inputStream;
-        int [] resp= new int[3];
+        int [] resp= new int[4];
 	public int [] getPropValues() throws IOException {
  
 		try {
@@ -35,11 +35,14 @@ public class GetPropertyValues {
 			String tamanoBuffer = prop.getProperty("tamanoBuffer");
 			String numClient = prop.getProperty("numClient");
 			String numServ = prop.getProperty("numServ");
+			String numMens = prop.getProperty("numMens");
                         
                         //pone en resp los properties leidos
                         resp [0] = Integer.parseInt(tamanoBuffer);
                         resp [1] = Integer.parseInt(numClient);
                         resp [2] = Integer.parseInt(numServ);
+                        resp [3] = Integer.parseInt(numMens);
+                        
                         
 		} catch (Exception e) {
 			System.out.println("Exception: " + e);
