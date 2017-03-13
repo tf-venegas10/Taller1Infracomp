@@ -8,11 +8,11 @@ public class Controler {
 
 	public static void playGround(int [] params){
 
-                int tamBuff = params[0];
-                int numServ = params[2];
-                int numClien= params[1];
-                int numMens = params[3];
-                
+		int tamBuff = params[0];
+		int numServ = params[2];
+		int numClien= params[1];
+		int numMens = params[3];
+
 		Buffer buff= new Buffer(tamBuff);
 		Servidor s;
 		Cliente c;
@@ -25,5 +25,5 @@ public class Controler {
 			c.start();
 		}
 	}
-  
+
 }
